@@ -1,9 +1,13 @@
 class SignUps::NewPage < GuestLayout
+  include Shared::AuthCard
   needs form : SignUpForm
 
   def content
-    h1 "Sign Up"
-    render_sign_up_form(@form)
+    
+    auth_card name: "Sign Up" do
+      render_sign_up_form(@form)
+    end
+    
   end
 
   private def render_sign_up_form(f)
@@ -11,12 +15,22 @@ class SignUps::NewPage < GuestLayout
       sign_up_fields(f)
       submit "Sign Up", flow_id: "sign-up-button"
     end
+    br
     link "Sign in instead", to: SignIns::New
   end
 
   private def sign_up_fields(f)
-    field(f.email) { |i| email_input i, autofocus: "true" }
-    field(f.password) { |i| password_input i }
-    field(f.password_confirmation) { |i| password_input i }
+  
+    div class: "form-group" do
+      field(f.email) { |i| email_input i, autofocus: "true", class: "form-control" }
+    end
+    
+    div class: "form-group" do
+      field(f.password) { |i| password_input i, class: "form-control" }
+    end
+    
+    div class: "form-group" do
+      field(f.password_confirmation) { |i| password_input i, class: "form-control" }
+    end
   end
 end
