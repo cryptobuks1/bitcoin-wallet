@@ -11,5 +11,4 @@
 // Note: importing with `~` tells webpack to look in the installed npm packages
 // https://stackoverflow.com/questions/39535760/what-does-a-tilde-in-a-css-url-do
 
-// @import "~normalize-scss/sass/normalize/import-now";
-// @import "components/my_new_component";
+@import "./components/sidebar";

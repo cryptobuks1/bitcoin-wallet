@@ -4,6 +4,10 @@ class Me::ShowPage < MainLayout
     h3 "Email:  #{@current_user.email}"
     helpful_tips
   end
+  
+  def select_sidebar
+    :me
+  end
 
   private def helpful_tips
     h3 "Next, you may want to:"
